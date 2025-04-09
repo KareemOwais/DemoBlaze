@@ -29,7 +29,7 @@ public class HomePage {
     private Button CategoryButton = new Button(By.xpath("//a[text()='CATEGORIES']"));
 
     public void NavigateTO(String button){
-        waitForElementToBeVisible(WebDriverFactory.getDriver(),WelcomeText.Locator);
+        //waitForElementToBeVisible(WebDriverFactory.getDriver(),WelcomeText.Locator);
         switch (button.toLowerCase()) {
             case "signup":
                 SignUpBUtton.click();
@@ -55,9 +55,10 @@ public class HomePage {
         usernameTextbox.setText(username);
         passwordTextbox.setText(password);
         loginButton.click();
+        waitForElementToBeVisible(WebDriverFactory.getDriver(),WelcomeText.Locator);
     }
     public HomePage ChooseCategory(String category) {
-        waitForElementToBeVisible(WebDriverFactory.getDriver(),WelcomeText.Locator);
+        //waitForElementToBeVisible(WebDriverFactory.getDriver(),WelcomeText.Locator);
         CategoryButton.click();
         switch (category.toLowerCase()) {
             case "phones":

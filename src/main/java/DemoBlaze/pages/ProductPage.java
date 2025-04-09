@@ -14,7 +14,7 @@ public class ProductPage {
     private Label WelcomeText= new Label(By.xpath("//a[normalize-space()='Welcome kareem1234']"));
 
     public void clickAddToCart() {
-        waitForElementToBeVisible(WebDriverFactory.getDriver(),WelcomeText.Locator);
+        //waitForElementToBeVisible(WebDriverFactory.getDriver(),WelcomeText.Locator);
         AddToCartButton.click();
         HandleAlert(WebDriverFactory.getDriver());
     }
