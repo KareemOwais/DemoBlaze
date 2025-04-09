@@ -40,4 +40,9 @@ public class Test1 {
         cartPage.clickConfirmationButton();
         WebDriverFactory.closeDriver();
     }
+
+    @Test
+    public void test2(){
+
+    }
 }
