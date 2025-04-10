@@ -1,12 +1,18 @@
 package DemoBlaze.pages;
 
+import DemoBlaze.Utils.WaitUtils;
 import Factory.WebDriverFactory;
 import Interactions.Button;
 import Interactions.Label;
 import Interactions.Textbox;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static DemoBlaze.Utils.WaitUtils.waitForElementToBeVisible;
 
@@ -51,13 +57,27 @@ public class HomePage {
                 System.out.println("Invalid button");
         }
     }
-    public void Login(String username, String password) {
+    public boolean Login(String username, String password) {
         LoginButton.click();
         usernameTextbox.setText(username);
         passwordTextbox.setText(password);
         loginButton.click();
-        waitForElementToBeVisible(WebDriverFactory.getDriver(),WelcomeText.Locator);
+
+        try {
+            Alert alert = new WebDriverWait(WebDriverFactory.getDriver(), Duration.ofSeconds(3))
+                    .until(ExpectedConditions.alertIsPresent());
+
+            String alertText = WebDriverFactory.getDriver().switchTo().alert().getText();
+            System.out.println("Alert appeared: " + alertText);
+            WebDriverFactory.getDriver().switchTo().alert().accept();
+            return false; // Login failed
+        } catch (TimeoutException e) {
+            // No alert = login success → wait for Welcome
+            waitForElementToBeVisible(WebDriverFactory.getDriver(), WelcomeText.Locator);
+            return true;
+        }
     }
+
     public HomePage ChooseCategory(String category) {
         //waitForElementToBeVisible(WebDriverFactory.getDriver(),WelcomeText.Locator);
         CategoryButton.click();
@@ -82,4 +102,9 @@ public class HomePage {
         Button productButton = new Button(By.xpath(xpath));
         productButton.click();
     }
+
+    public boolean isUserLoggedIn() {
+        return WaitUtils.waitForElementToBeVisible(WebDriverFactory.getDriver(), WelcomeText.Locator).isDisplayed();
+    }
+
 }

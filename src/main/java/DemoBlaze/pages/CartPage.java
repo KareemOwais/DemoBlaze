@@ -104,4 +104,10 @@ public class CartPage {
         waitForSuccessAnimation(driver, LogoLabel.Locator);
         ConfirmationButton.click();
     }
+    public void completePurchase(String name, String country, String city, String card, String month, String year) {
+        ClickPlaceOrderButton();
+        fillOrderDetails(name, country, city, card, month, year);
+        clickPurchaseButton();
+        clickConfirmationButton();
+    }
 }

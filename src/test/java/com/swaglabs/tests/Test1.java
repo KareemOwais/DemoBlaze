@@ -1,6 +1,7 @@
 package com.swaglabs.tests;
-
+import DemoBlaze.Utils.CSVDataProviders;
 import DemoBlaze.Utils.CSVDataReader;
+import DemoBlaze.pages.BaseTest;
 import DemoBlaze.pages.CartPage;
 import DemoBlaze.pages.HomePage;
 import DemoBlaze.pages.ProductPage;
@@ -8,319 +9,154 @@ import Factory.WebDriverFactory;
 import java.util.Iterator;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class Test1 {
-    WebDriver driver;
+public class Test1 extends BaseTest {
 
-    @DataProvider(name = "DataProvTest1")
-    public Iterator<Object[]> getLoginData() {
-        return CSVDataReader.readCsv("test1.csv");
+    HomePage homePage;
+    ProductPage productPage;
+    CartPage cartPage;
+
+    @BeforeMethod
+    public void initPages() {
+        homePage = new HomePage();
+        productPage = new ProductPage();
+        cartPage = new CartPage();
     }
 
-    @DataProvider(name = "DataProvTest2")
-    public Iterator<Object[]> getLoginData2() {
-        return CSVDataReader.readCsv("test2.csv");
+    public void assertLogin(HomePage homePage, String username, String password) {
+        boolean loginSuccess = homePage.Login(username, password);
+        Assert.assertTrue(loginSuccess, "Login failed for user: " + username);
     }
 
-    @DataProvider(name = "DataProvTest3")
-    public Iterator<Object[]> getLoginData3() {
-        return CSVDataReader.readCsv("test3" +
-                ".csv");
-    }
-    @DataProvider(name = "DataProvTest4")
-    public Iterator<Object[]> getLoginData4() {
-        return CSVDataReader.readCsv("test4" +
-                ".csv");
-    }
-    @DataProvider(name = "DataProvTest5")
-    public Iterator<Object[]> getLoginData5() {
-        return CSVDataReader.readCsv("test5" +
-                ".csv");
+    public void addProductToCart(String category, String product) {
+        homePage.ChooseCategory(category).ChooseProduct(product);
+        productPage.clickAddToCart();
     }
 
 
-// ============================================================================
-// 🔹 SCENARIO 1 – FULL E2E: LOGIN → ADD TWO PRODUCTS → DELETE ONE → PURCHASE
-// ============================================================================
 
 
-    @Test(dataProvider = "DataProvTest1", invocationCount =3 , priority = 1)
+    @Test(dataProvider = "DataProvTest1", invocationCount = 3, priority = 1, dataProviderClass = CSVDataProviders.class)
     public void test1(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
-        this.driver = WebDriverFactory.getDriver();
-        this.driver.get("https://demoblaze.com/");
-        this.driver.manage().window().maximize();
 
-        HomePage homePage = new HomePage();
-        ProductPage productPage = new ProductPage();
-        CartPage cartPage = new CartPage();
 
-        homePage.Login(Username, Password);
+        assertLogin(homePage, Username, Password);
         homePage.ChooseCategory(Catergory1).ChooseProduct(Product1);
         productPage.clickAddToCart();
-
         homePage.NavigateTO("Home");
-        homePage.ChooseCategory(Catergory2).ChooseProduct(Product2);
-        productPage.clickAddToCart();
-
+        addProductToCart(Catergory1, Product1);
         homePage.NavigateTO("cart");
         cartPage.deleteProductFromCart(Product2);
         Assert.assertEquals(cartPage.ActualPrice(), cartPage.expectedPrice());
-        cartPage.ClickPlaceOrderButton();
-        cartPage.fillOrderDetails(Name, Country, City, CreditCard, Month, Year);
-        cartPage.clickPurchaseButton();
-        cartPage.clickConfirmationButton();
-        WebDriverFactory.closeDriver();
+        cartPage.completePurchase(Name, Country, City, CreditCard, Month, Year);
+
+
     }
-// ============================================================================
-// 🔚 End of Scenario 1
-// ============================================================================
 
 
-
-// ============================================================================
-// 🔹 SCENARIO 2 – LOGIN, ADD PRODUCTS, LOGOUT → LOGIN AGAIN → PURCHASE
-// ============================================================================
-
-    @Test(dataProvider = "DataProvTest2", invocationCount =3 , priority = 2)
+    @Test(dataProvider = "DataProvTest2", invocationCount = 3, priority = 2, dataProviderClass = CSVDataProviders.class)
     public void test2(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
-        this.driver = WebDriverFactory.getDriver();
-        this.driver.get("https://demoblaze.com/");
-        this.driver.manage().window().maximize();
 
-        HomePage homePage = new HomePage();
-        ProductPage productPage = new ProductPage();
-        CartPage cartPage = new CartPage();
 
-        homePage.Login(Username, Password);
-        homePage.ChooseCategory(Catergory1).ChooseProduct(Product1);
-        productPage.clickAddToCart();
-
+        assertLogin(homePage, Username, Password);
+        addProductToCart(Catergory1, Product1);
         homePage.NavigateTO("Home");
         homePage.ChooseCategory(Catergory2).ChooseProduct(Product2);
         productPage.clickAddToCart();
-
         homePage.NavigateTO("cart");
         homePage.NavigateTO("logout");
         homePage.Login(Username, Password);
         homePage.NavigateTO("cart");
-
         Assert.assertEquals(cartPage.ActualPrice(), cartPage.expectedPrice());
-        cartPage.ClickPlaceOrderButton();
-        cartPage.fillOrderDetails(Name, Country, City, CreditCard, Month, Year);
-        cartPage.clickPurchaseButton();
-        cartPage.clickConfirmationButton();
-        WebDriverFactory.closeDriver();
+        cartPage.completePurchase(Name, Country, City, CreditCard, Month, Year);
+
+
     }
 
-// ============================================================================
-// 🔚 End of Scenario 2
-// ============================================================================
 
-
-
-// ============================================================================
-// 🔹 SCENARIO 3 – LOGIN → GO TO CART DIRECTLY → PLACE ORDER (EMPTY CART)
-// ============================================================================
-
-
-    @Test(dataProvider = "DataProvTest3", invocationCount =3 , priority = 4)
+    @Test(dataProvider = "DataProvTest3", invocationCount = 3, priority = 4, dataProviderClass = CSVDataProviders.class)
     public void test3(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
-        this.driver = WebDriverFactory.getDriver();
-        driver.get("https://demoblaze.com/");
-        driver.manage().window().maximize();
 
-        HomePage homePage = new HomePage();
-        homePage.Login(Username, Password);
+        assertLogin(homePage, Username, Password);
         homePage.NavigateTO("cart");
+        cartPage.completePurchase(Name, Country, City, CreditCard, Month, Year);
 
-        CartPage cartPage = new CartPage();
-        cartPage.ClickPlaceOrderButton();
-        cartPage.fillOrderDetails(Name, Country, City, CreditCard, Month, Year);
-        cartPage.clickPurchaseButton();
-        cartPage.clickConfirmationButton();
-
-        WebDriverFactory.closeDriver();
     }
 
-// ============================================================================
-// 🔚 End of Scenario 3
-// ============================================================================
 
-
-
-
-// ============================================================================
-// 🔹 SCENARIO 4 – ADD ONE PRODUCT → VALIDATE CART → PLACE ORDER
-// ============================================================================
-
-
-    @Test(dataProvider = "DataProvTest3", invocationCount =3 , priority = 3)
+    @Test(dataProvider = "DataProvTest3", invocationCount = 3, priority = 3, dataProviderClass = CSVDataProviders.class)
     public void test4(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
-        this.driver = WebDriverFactory.getDriver();
-        driver.get("https://demoblaze.com/");
-        driver.manage().window().maximize();
 
-        HomePage homePage = new HomePage();
-        homePage.ChooseCategory(Catergory2).ChooseProduct(Product2);
-
-        ProductPage productPage = new ProductPage();
-        productPage.clickAddToCart();
-
+        addProductToCart(Catergory1, Product1);
         homePage.NavigateTO("cart");
-
-        CartPage cartPage = new CartPage();
         Assert.assertEquals(cartPage.ActualPrice(), cartPage.expectedPrice());
+        cartPage.completePurchase(Name, Country, City, CreditCard, Month, Year);
 
-        cartPage.ClickPlaceOrderButton();
-        cartPage.fillOrderDetails(Name, Country, City, CreditCard, Month, Year);
-        cartPage.clickPurchaseButton();
-        cartPage.clickConfirmationButton();
-
-        WebDriverFactory.closeDriver();
     }
 
-// ============================================================================
-// 🔚 End of Scenario 4
-// ============================================================================
 
-
-// ============================================================================
-// 🔹 SCENARIO 5 – INCOMPLETE USER INFO: MISSING CITY AND COUNTRY
-// ============================================================================
-
-    @Test(dataProvider = "DataProvTest4", invocationCount =3 , priority = 8)
+    @Test(dataProvider = "DataProvTest4", invocationCount = 3, priority = 8, dataProviderClass = CSVDataProviders.class)
     public void test5(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
-        this.driver = WebDriverFactory.getDriver();
-        this.driver.get("https://demoblaze.com/");
-        this.driver.manage().window().maximize();
 
-        HomePage homePage = new HomePage();
-        ProductPage productPage = new ProductPage();
-        CartPage cartPage = new CartPage();
 
-        homePage.Login(Username, Password);
-        homePage.ChooseCategory(Catergory2).ChooseProduct(Product2);
-        productPage.clickAddToCart();
-
+        assertLogin(homePage, Username, Password);
+        addProductToCart(Catergory1, Product1);
         homePage.NavigateTO("cart");
         Assert.assertEquals(cartPage.ActualPrice(), cartPage.expectedPrice());
+        cartPage.completePurchase(Name, Country, City, CreditCard, Month, Year);
 
-        cartPage.ClickPlaceOrderButton();
-        cartPage.fillOrderDetails(Name, "", "", CreditCard, "", "");
-        cartPage.clickPurchaseButton();
-        cartPage.clickConfirmationButton();
 
-        WebDriverFactory.closeDriver();
     }
 
-// ============================================================================
-// 🔚 End of Scenario 5
-// ============================================================================
 
-
-
-
-// ============================================================================
-// 🔹 SCENARIO 6 – INCOMPLETE USER INFO: MISSING NAME AND CARD
-// ============================================================================
-
-
-    @Test(dataProvider = "DataProvTest4", invocationCount =3 , priority = 5)
+    @Test(dataProvider = "DataProvTest4", invocationCount = 3, priority = 5, dataProviderClass = CSVDataProviders.class)
     public void test6(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
-        this.driver = WebDriverFactory.getDriver();
-        this.driver.get("https://demoblaze.com/");
-        this.driver.manage().window().maximize();
 
-        HomePage homePage = new HomePage();
-        ProductPage productPage = new ProductPage();
-        CartPage cartPage = new CartPage();
 
-        homePage.Login(Username, Password);
-        homePage.ChooseCategory(Catergory2).ChooseProduct(Product2);
-        productPage.clickAddToCart();
-
+        assertLogin(homePage, Username, Password);
+        addProductToCart(Catergory1, Product1);
         homePage.NavigateTO("cart");
         Assert.assertEquals(cartPage.ActualPrice(), cartPage.expectedPrice());
+        cartPage.completePurchase(Name, Country, City, CreditCard, Month, Year);
 
-        cartPage.ClickPlaceOrderButton();
-        cartPage.fillOrderDetails(" ", Country, City, " ", Month, Year);
-        cartPage.clickPurchaseButton();
-        cartPage.clickConfirmationButton();
 
-        WebDriverFactory.closeDriver();
     }
-// ============================================================================
-// 🔚 End of Scenario 6
-// ============================================================================
 
 
-
-
-
-// ============================================================================
-// 🔹 SCENARIO 7 – STRESS TEST: ADD SAME PRODUCT 10 TIMES
-// ============================================================================
-
-    @Test(dataProvider = "DataProvTest5" ,invocationCount =3 , priority = 0)
+    @Test(dataProvider = "DataProvTest5", invocationCount = 3, priority = 0, dataProviderClass = CSVDataProviders.class)
     public void test7(String Username, String Password, String Catergory1, String Product1, String Catergory2, String Product2,
                       String Name, String CreditCard, String Country, String City, String Year, String Month) {
-        this.driver = WebDriverFactory.getDriver();
-        this.driver.get("https://demoblaze.com/");
-        this.driver.manage().window().maximize();
-        HomePage homePage = new HomePage();
-        ProductPage productPage = new ProductPage();
-        CartPage cartPage = new CartPage();
-        homePage.Login(Username, Password);
+
+
+        assertLogin(homePage, Username, Password);
         homePage.ChooseCategory(Catergory1).ChooseProduct(Product1);
-        productPage.clickAddToCart();
-        productPage.clickAddToCart();
-        productPage.clickAddToCart();
-        productPage.clickAddToCart();
-        productPage.clickAddToCart();
-        productPage.clickAddToCart();
-        productPage.clickAddToCart();
-        productPage.clickAddToCart();
-        productPage.clickAddToCart();
-        productPage.clickAddToCart();
+        for (int i = 0; i < 10; i++) {
+            productPage.clickAddToCart();
+        }
         homePage.NavigateTO("cart");
         Assert.assertEquals(cartPage.ActualPrice(), cartPage.expectedPrice());
-        cartPage.ClickPlaceOrderButton();
-        cartPage.fillOrderDetails(Name, Country, City, CreditCard, Month, Year);
-        cartPage.clickPurchaseButton();
-        cartPage.clickConfirmationButton();
-        WebDriverFactory.closeDriver();
+        cartPage.completePurchase(Name, Country, City, CreditCard, Month, Year);
+
+
     }
 
-// ============================================================================
-// 🔚 End of Scenario 7
-// ============================================================================
 
-
-
-// ============================================================================
-// 🔹 SCENARIO 8 – ADD ONE PRODUCT → NAVIGATE AWAY → ADD ANOTHER PRODUCT
-// ============================================================================
-
-    @Test(dataProvider = "DataProvTest5" ,invocationCount =3 , priority = 7 )
+    @Test(dataProvider = "DataProvTest5", invocationCount = 3, priority = 7, dataProviderClass = CSVDataProviders.class)
     public void test8(String Username, String Password, String Catergory1, String Product1, String Catergory2, String Product2,
                       String Name, String CreditCard, String Country, String City, String Year, String Month) {
-        this.driver = WebDriverFactory.getDriver();
-        this.driver.get("https://demoblaze.com/");
-        this.driver.manage().window().maximize();
-        HomePage homePage = new HomePage();
-        ProductPage productPage = new ProductPage();
-        CartPage cartPage = new CartPage();
-        homePage.Login(Username, Password);
-        homePage.ChooseCategory(Catergory1).ChooseProduct(Product1);
-        productPage.clickAddToCart();
+
+
+        assertLogin(homePage, Username, Password);
+        addProductToCart(Catergory1, Product1);
         homePage.NavigateTO("cart");
         homePage.NavigateTO("Home");
         homePage.ChooseCategory(Catergory2).ChooseProduct(Product2);
@@ -328,14 +164,8 @@ public class Test1 {
         homePage.NavigateTO("cart");
         cartPage.deleteProductFromCart(Product1);
         Assert.assertEquals(cartPage.ActualPrice(), cartPage.expectedPrice());
-        cartPage.ClickPlaceOrderButton();
-        cartPage.fillOrderDetails(Name, Country, City, CreditCard, Month, Year);
-        cartPage.clickPurchaseButton();
-        cartPage.clickConfirmationButton();
-        WebDriverFactory.closeDriver();
-    }
+        cartPage.completePurchase(Name, Country, City, CreditCard, Month, Year);
 
-// ============================================================================
-// 🔚 End of Scenario 8
-// ============================================================================
+
+    }
 }
