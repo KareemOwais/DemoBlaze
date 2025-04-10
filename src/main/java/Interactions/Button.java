@@ -11,18 +11,11 @@ public class Button extends Element {
     }
 
     public void click() {
-        int attempts = 0;
-        while (attempts < 2) {
-            try {
-                WebElement element = waitForElementToBeClickable(getDriver(), Locator);
-                element.click();
-                break;
-            } catch (org.openqa.selenium.StaleElementReferenceException e) {
-                attempts++;
-                System.out.println("⚠️ Retrying click due to stale element: " + Locator);
-            }
-        }
+
+        WebElement element = waitForElementToBeClickable(getDriver(), Locator);
+        element.click();
     }
+
 
 
 }

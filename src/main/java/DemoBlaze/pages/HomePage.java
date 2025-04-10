@@ -18,9 +18,6 @@ import static DemoBlaze.Utils.WaitUtils.waitForElementToBeVisible;
 
 public class HomePage {
     //Locaters
-    private WebDriver driver ;
-    public static String[] Products = new String[10];
-    public static int[] ProductsPrices = new int[10];
     private Button LogoutButton = new Button(By.id("logout2"));
     private Button SignUpBUtton = new Button(By.id("signin2"));
     private Button LoginButton= new Button(By.id("login2"));
@@ -36,7 +33,6 @@ public class HomePage {
     private Button CategoryButton = new Button(By.xpath("//a[text()='CATEGORIES']"));
 
     public void NavigateTO(String button){
-        //waitForElementToBeVisible(WebDriverFactory.getDriver(),WelcomeText.Locator);
         switch (button.toLowerCase()) {
             case "signup":
                 SignUpBUtton.click();
@@ -79,7 +75,6 @@ public class HomePage {
     }
 
     public HomePage ChooseCategory(String category) {
-        //waitForElementToBeVisible(WebDriverFactory.getDriver(),WelcomeText.Locator);
         CategoryButton.click();
         switch (category.toLowerCase()) {
             case "phones":
@@ -102,9 +97,6 @@ public class HomePage {
         Button productButton = new Button(By.xpath(xpath));
         productButton.click();
     }
-
-    public boolean isUserLoggedIn() {
-        return WaitUtils.waitForElementToBeVisible(WebDriverFactory.getDriver(), WelcomeText.Locator).isDisplayed();
-    }
+    
 
 }

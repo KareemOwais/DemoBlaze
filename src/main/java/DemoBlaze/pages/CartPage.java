@@ -16,8 +16,8 @@ public class CartPage {
     //Locators
     private WebDriver driver = WebDriverFactory.getDriver();
 
-        private Label TotalPrice = new Label(By.id("totalp"));
-        Label PlaceOrderLabel = new Label(By.id("orderModalLabel"));
+    private Label TotalPrice = new Label(By.id("totalp"));
+    Label PlaceOrderLabel = new Label(By.id("orderModalLabel"));
         Button ConfirmationButton = new Button(By.xpath("//button[text()='OK']"));
         private Button PlaceOrderButton = new Button(By.xpath("//button[@class='btn btn-success']"));
         private Label LogoLabel= new Label(By.xpath("//span[@class='sa-line sa-long animateSuccessLong']"));
