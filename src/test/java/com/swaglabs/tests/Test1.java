@@ -46,7 +46,7 @@ public class Test1 {
 // ============================================================================
 
 
-    @Test(dataProvider = "DataProvTest1", invocationCount = 1 , priority = 1)
+    @Test(dataProvider = "DataProvTest1", invocationCount =3 , priority = 1)
     public void test1(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -84,7 +84,7 @@ public class Test1 {
 // 🔹 SCENARIO 2 – LOGIN, ADD PRODUCTS, LOGOUT → LOGIN AGAIN → PURCHASE
 // ============================================================================
 
-    @Test(dataProvider = "DataProvTest2", invocationCount = 1 , priority = 2)
+    @Test(dataProvider = "DataProvTest2", invocationCount =3 , priority = 2)
     public void test2(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -127,7 +127,7 @@ public class Test1 {
 // ============================================================================
 
 
-    @Test(dataProvider = "DataProvTest3", invocationCount = 1 , priority = 4)
+    @Test(dataProvider = "DataProvTest3", invocationCount =3 , priority = 4)
     public void test3(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -159,7 +159,7 @@ public class Test1 {
 // ============================================================================
 
 
-    @Test(dataProvider = "DataProvTest3", invocationCount = 1 , priority = 3)
+    @Test(dataProvider = "DataProvTest3", invocationCount =3 , priority = 3)
     public void test4(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -194,7 +194,7 @@ public class Test1 {
 // 🔹 SCENARIO 5 – INCOMPLETE USER INFO: MISSING CITY AND COUNTRY
 // ============================================================================
 
-    @Test(dataProvider = "DataProvTest4", invocationCount = 1 , priority = 8)
+    @Test(dataProvider = "DataProvTest4", invocationCount =3 , priority = 8)
     public void test5(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -232,7 +232,7 @@ public class Test1 {
 // ============================================================================
 
 
-    @Test(dataProvider = "DataProvTest4", invocationCount = 1 , priority = 5)
+    @Test(dataProvider = "DataProvTest4", invocationCount =3 , priority = 5)
     public void test6(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -269,7 +269,7 @@ public class Test1 {
 // 🔹 SCENARIO 7 – STRESS TEST: ADD SAME PRODUCT 10 TIMES
 // ============================================================================
 
-    @Test(dataProvider = "DataProvTest5" ,invocationCount =1 , priority = 0)
+    @Test(dataProvider = "DataProvTest5" ,invocationCount =3 , priority = 0)
     public void test7(String Username, String Password, String Catergory1, String Product1, String Catergory2, String Product2,
                       String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -309,7 +309,7 @@ public class Test1 {
 // 🔹 SCENARIO 8 – ADD ONE PRODUCT → NAVIGATE AWAY → ADD ANOTHER PRODUCT
 // ============================================================================
 
-    @Test(dataProvider = "DataProvTest5" ,invocationCount =1 , priority = 7 )
+    @Test(dataProvider = "DataProvTest5" ,invocationCount =3 , priority = 7 )
     public void test8(String Username, String Password, String Catergory1, String Product1, String Catergory2, String Product2,
                       String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
