@@ -189,4 +189,60 @@ public class Test1 {
 
         WebDriverFactory.closeDriver();
     }
+
+    @Test(dataProvider = "DataProvTest1" ,invocationCount =1 )
+    public void test7(String Username, String Password, String Catergory1, String Product1, String Catergory2, String Product2,
+                      String Name, String CreditCard, String Country, String City, String Year, String Month) {
+        this.driver = WebDriverFactory.getDriver();
+        this.driver.get("https://demoblaze.com/");
+        this.driver.manage().window().maximize();
+        HomePage homePage = new HomePage();
+        ProductPage productPage = new ProductPage();
+        CartPage cartPage = new CartPage();
+        homePage.Login(Username, Password);
+        homePage.ChooseCategory(Catergory1).ChooseProduct(Product1);
+        productPage.clickAddToCart();
+        productPage.clickAddToCart();
+        productPage.clickAddToCart();
+        productPage.clickAddToCart();
+        productPage.clickAddToCart();
+        productPage.clickAddToCart();
+        productPage.clickAddToCart();
+        productPage.clickAddToCart();
+        productPage.clickAddToCart();
+        productPage.clickAddToCart();
+        homePage.NavigateTO("cart");
+        Assert.assertEquals(cartPage.ActualPrice(), cartPage.expectedPrice());
+        cartPage.ClickPlaceOrderButton();
+        cartPage.fillOrderDetails(Name, Country, City, CreditCard, Month, Year);
+        cartPage.clickPurchaseButton();
+        cartPage.clickConfirmationButton();
+        WebDriverFactory.closeDriver();
+    }
+
+    @Test(dataProvider = "DataProvTest4" ,invocationCount =1 )
+    public void test8(String Username, String Password, String Catergory1, String Product1, String Catergory2, String Product2,
+                      String Name, String CreditCard, String Country, String City, String Year, String Month) {
+        this.driver = WebDriverFactory.getDriver();
+        this.driver.get("https://demoblaze.com/");
+        this.driver.manage().window().maximize();
+        HomePage homePage = new HomePage();
+        ProductPage productPage = new ProductPage();
+        CartPage cartPage = new CartPage();
+        homePage.Login(Username, Password);
+        homePage.ChooseCategory(Catergory1).ChooseProduct(Product1);
+        productPage.clickAddToCart();
+        homePage.NavigateTO("cart");
+        homePage.NavigateTO("Home");
+        homePage.ChooseCategory(Catergory2).ChooseProduct(Product2);
+        productPage.clickAddToCart();
+        homePage.NavigateTO("cart");
+        cartPage.deleteProductFromCart(Product1);
+        Assert.assertEquals(cartPage.ActualPrice(), cartPage.expectedPrice());
+        cartPage.ClickPlaceOrderButton();
+        cartPage.fillOrderDetails(Name, Country, City, CreditCard, Month, Year);
+        cartPage.clickPurchaseButton();
+        cartPage.clickConfirmationButton();
+        WebDriverFactory.closeDriver();
+    }
 }
