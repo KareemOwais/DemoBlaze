@@ -6,6 +6,7 @@ import Interactions.Label;
 import Interactions.Textbox;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static DemoBlaze.Utils.WaitUtils.waitForElementToBeVisible;
 
@@ -19,7 +20,7 @@ public class HomePage {
     private Button LoginButton= new Button(By.id("login2"));
     private Button HomeButton= new Button(By.xpath("//a[text()='Home ']"));
     private Button CartButton= new Button(By.id("cartur"));
-    private Label WelcomeText= new Label(By.xpath("//a[normalize-space()='Welcome kareem1234']"));
+    private Label WelcomeText = new Label(By.xpath("//a[contains(text(), 'Welcome')]"));
     private Textbox usernameTextbox = new Textbox(By.id("loginusername"));
     private Textbox passwordTextbox = new Textbox(By.id("loginpassword"));
     private Button loginButton = new Button(By.xpath("//button[text()='Log in']"));

@@ -11,7 +11,7 @@ import static DemoBlaze.Utils.WaitUtils.waitForElementToBeVisible;
 public class ProductPage {
 
     private Button AddToCartButton = new Button(By.xpath("//a[text()='Add to cart']"));
-    private Label WelcomeText= new Label(By.xpath("//a[normalize-space()='Welcome kareem1234']"));
+    private Label WelcomeText = new Label(By.xpath("//a[contains(text(), 'Welcome')]"));
 
     public void clickAddToCart() {
         //waitForElementToBeVisible(WebDriverFactory.getDriver(),WelcomeText.Locator);

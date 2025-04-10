@@ -24,12 +24,29 @@ public class Test1 {
         return CSVDataReader.readCsv("test2.csv");
     }
 
-    @DataProvider(name = "DataProvTest4")
+    @DataProvider(name = "DataProvTest3")
     public Iterator<Object[]> getLoginData3() {
-        return CSVDataReader.readCsv("test4.csv");
+        return CSVDataReader.readCsv("test3" +
+                ".csv");
+    }
+    @DataProvider(name = "DataProvTest4")
+    public Iterator<Object[]> getLoginData4() {
+        return CSVDataReader.readCsv("test4" +
+                ".csv");
+    }
+    @DataProvider(name = "DataProvTest5")
+    public Iterator<Object[]> getLoginData5() {
+        return CSVDataReader.readCsv("test5" +
+                ".csv");
     }
 
-    @Test(dataProvider = "DataProvTest1", invocationCount = 3)
+
+// ============================================================================
+// 🔹 SCENARIO 1 – FULL E2E: LOGIN → ADD TWO PRODUCTS → DELETE ONE → PURCHASE
+// ============================================================================
+
+
+    @Test(dataProvider = "DataProvTest1", invocationCount = 1 , priority = 1)
     public void test1(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -57,8 +74,17 @@ public class Test1 {
         cartPage.clickConfirmationButton();
         WebDriverFactory.closeDriver();
     }
+// ============================================================================
+// 🔚 End of Scenario 1
+// ============================================================================
 
-    @Test(dataProvider = "DataProvTest2", invocationCount = 3)
+
+
+// ============================================================================
+// 🔹 SCENARIO 2 – LOGIN, ADD PRODUCTS, LOGOUT → LOGIN AGAIN → PURCHASE
+// ============================================================================
+
+    @Test(dataProvider = "DataProvTest2", invocationCount = 1 , priority = 2)
     public void test2(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -90,7 +116,18 @@ public class Test1 {
         WebDriverFactory.closeDriver();
     }
 
-    @Test(dataProvider = "DataProvTest4", invocationCount = 3)
+// ============================================================================
+// 🔚 End of Scenario 2
+// ============================================================================
+
+
+
+// ============================================================================
+// 🔹 SCENARIO 3 – LOGIN → GO TO CART DIRECTLY → PLACE ORDER (EMPTY CART)
+// ============================================================================
+
+
+    @Test(dataProvider = "DataProvTest3", invocationCount = 1 , priority = 4)
     public void test3(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -110,7 +147,19 @@ public class Test1 {
         WebDriverFactory.closeDriver();
     }
 
-    @Test(dataProvider = "DataProvTest4", invocationCount = 3)
+// ============================================================================
+// 🔚 End of Scenario 3
+// ============================================================================
+
+
+
+
+// ============================================================================
+// 🔹 SCENARIO 4 – ADD ONE PRODUCT → VALIDATE CART → PLACE ORDER
+// ============================================================================
+
+
+    @Test(dataProvider = "DataProvTest3", invocationCount = 1 , priority = 3)
     public void test4(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -136,9 +185,16 @@ public class Test1 {
         WebDriverFactory.closeDriver();
     }
 
-    // ✅ ADDED BELOW: YOUR NEW SCENARIOS
+// ============================================================================
+// 🔚 End of Scenario 4
+// ============================================================================
 
-    @Test(dataProvider = "DataProvTest1", invocationCount = 3)
+
+// ============================================================================
+// 🔹 SCENARIO 5 – INCOMPLETE USER INFO: MISSING CITY AND COUNTRY
+// ============================================================================
+
+    @Test(dataProvider = "DataProvTest4", invocationCount = 1 , priority = 8)
     public void test5(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -164,7 +220,19 @@ public class Test1 {
         WebDriverFactory.closeDriver();
     }
 
-    @Test(dataProvider = "DataProvTest2", invocationCount = 3)
+// ============================================================================
+// 🔚 End of Scenario 5
+// ============================================================================
+
+
+
+
+// ============================================================================
+// 🔹 SCENARIO 6 – INCOMPLETE USER INFO: MISSING NAME AND CARD
+// ============================================================================
+
+
+    @Test(dataProvider = "DataProvTest4", invocationCount = 1 , priority = 5)
     public void test6(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -189,8 +257,19 @@ public class Test1 {
 
         WebDriverFactory.closeDriver();
     }
+// ============================================================================
+// 🔚 End of Scenario 6
+// ============================================================================
 
-    @Test(dataProvider = "DataProvTest1" ,invocationCount =3 )
+
+
+
+
+// ============================================================================
+// 🔹 SCENARIO 7 – STRESS TEST: ADD SAME PRODUCT 10 TIMES
+// ============================================================================
+
+    @Test(dataProvider = "DataProvTest5" ,invocationCount =1 , priority = 0)
     public void test7(String Username, String Password, String Catergory1, String Product1, String Catergory2, String Product2,
                       String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -220,7 +299,17 @@ public class Test1 {
         WebDriverFactory.closeDriver();
     }
 
-    @Test(dataProvider = "DataProvTest4" ,invocationCount =3 )
+// ============================================================================
+// 🔚 End of Scenario 7
+// ============================================================================
+
+
+
+// ============================================================================
+// 🔹 SCENARIO 8 – ADD ONE PRODUCT → NAVIGATE AWAY → ADD ANOTHER PRODUCT
+// ============================================================================
+
+    @Test(dataProvider = "DataProvTest5" ,invocationCount =1 , priority = 7 )
     public void test8(String Username, String Password, String Catergory1, String Product1, String Catergory2, String Product2,
                       String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -245,4 +334,8 @@ public class Test1 {
         cartPage.clickConfirmationButton();
         WebDriverFactory.closeDriver();
     }
+
+// ============================================================================
+// 🔚 End of Scenario 8
+// ============================================================================
 }
