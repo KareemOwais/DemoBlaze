@@ -29,7 +29,7 @@ public class Test1 {
         return CSVDataReader.readCsv("test4.csv");
     }
 
-    @Test(dataProvider = "DataProvTest1", invocationCount = 1)
+    @Test(dataProvider = "DataProvTest1", invocationCount = 3)
     public void test1(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -58,7 +58,7 @@ public class Test1 {
         WebDriverFactory.closeDriver();
     }
 
-    @Test(dataProvider = "DataProvTest2", invocationCount = 1)
+    @Test(dataProvider = "DataProvTest2", invocationCount = 3)
     public void test2(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -90,7 +90,7 @@ public class Test1 {
         WebDriverFactory.closeDriver();
     }
 
-    @Test(dataProvider = "DataProvTest4", invocationCount = 1)
+    @Test(dataProvider = "DataProvTest4", invocationCount = 3)
     public void test3(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -110,7 +110,7 @@ public class Test1 {
         WebDriverFactory.closeDriver();
     }
 
-    @Test(dataProvider = "DataProvTest4", invocationCount = 1)
+    @Test(dataProvider = "DataProvTest4", invocationCount = 3)
     public void test4(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -138,7 +138,7 @@ public class Test1 {
 
     // ✅ ADDED BELOW: YOUR NEW SCENARIOS
 
-    @Test(dataProvider = "DataProvTest1", invocationCount = 1)
+    @Test(dataProvider = "DataProvTest1", invocationCount = 3)
     public void test5(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -164,7 +164,7 @@ public class Test1 {
         WebDriverFactory.closeDriver();
     }
 
-    @Test(dataProvider = "DataProvTest2", invocationCount = 1)
+    @Test(dataProvider = "DataProvTest2", invocationCount = 3)
     public void test6(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -190,7 +190,7 @@ public class Test1 {
         WebDriverFactory.closeDriver();
     }
 
-    @Test(dataProvider = "DataProvTest1" ,invocationCount =1 )
+    @Test(dataProvider = "DataProvTest1" ,invocationCount =3 )
     public void test7(String Username, String Password, String Catergory1, String Product1, String Catergory2, String Product2,
                       String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
@@ -220,7 +220,7 @@ public class Test1 {
         WebDriverFactory.closeDriver();
     }
 
-    @Test(dataProvider = "DataProvTest4" ,invocationCount =1 )
+    @Test(dataProvider = "DataProvTest4" ,invocationCount =3 )
     public void test8(String Username, String Password, String Catergory1, String Product1, String Catergory2, String Product2,
                       String Name, String CreditCard, String Country, String City, String Year, String Month) {
         this.driver = WebDriverFactory.getDriver();
