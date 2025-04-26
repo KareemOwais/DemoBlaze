@@ -10,13 +10,9 @@ A TestNG-based Selenium automation framework for end-to-end testing of [Demoblaz
 - ✅ Selenium WebDriver
 - ✅ TestNG
 - ✅ Page Object Model (POM)
-- ✅ JSON for test data
 - ✅ Maven for build/run
-- ✅ GitHub for collaboration
 
 ---
-
-## 🚀 Getting Started
 
 ### 🔧 Clone the Repository
 
