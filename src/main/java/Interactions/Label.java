@@ -6,7 +6,8 @@ public class Label extends  Element{
     public Label(By Locator) {
         super(Locator);
     }
+
     public String getText() {
-        return getDriver().findElement(Locator).getText();
+        return driver.findElement(Locator).getText();
     }
 }

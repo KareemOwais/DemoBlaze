@@ -1,37 +1,40 @@
 package DemoBlaze.pages;
 
-import DemoBlaze.Utils.WaitUtils;
+
 import Factory.WebDriverFactory;
 import Interactions.Button;
 import Interactions.Label;
 import Interactions.Textbox;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import static DemoBlaze.Utils.WaitUtils.waitForElementToBeVisible;
 
-public class HomePage {
-    //Locaters
-    private Button LogoutButton = new Button(By.id("logout2"));
-    private Button SignUpBUtton = new Button(By.id("signin2"));
-    private Button LoginButton= new Button(By.id("login2"));
-    private Button HomeButton= new Button(By.xpath("//a[text()='Home ']"));
-    private Button CartButton= new Button(By.id("cartur"));
-    private Label WelcomeText = new Label(By.xpath("//a[contains(text(), 'Welcome')]"));
-    private Textbox usernameTextbox = new Textbox(By.id("loginusername"));
-    private Textbox passwordTextbox = new Textbox(By.id("loginpassword"));
-    private Button loginButton = new Button(By.xpath("//button[text()='Log in']"));
-    private Button PhonesCategory = new Button(By.xpath("//a[text()='Phones']"));
-    private Button LaptopsCategory = new Button(By.xpath("//a[text()='Laptops']"));
-    private Button MonitorsCategory = new Button(By.xpath("//a[text()='Monitors']"));
-    private Button CategoryButton = new Button(By.xpath("//a[text()='CATEGORIES']"));
 
+public class HomePage {
+    //Locators
+    private static final Logger logger = LoggerFactory.getLogger(HomePage.class);
+
+    private final Button LogoutButton = new Button(By.id("logout2"), "Logout Button");
+    private Button SignUpBUtton = new Button(By.id("signin2"),"SignUp Button");
+    private Button LoginButton= new Button(By.id("login2"),"Login Button");
+    private Button HomeButton= new Button(By.xpath("//a[text()='Home ']"),"Home Button");
+    private Button CartButton= new Button(By.id("cartur"),"Cart Button");
+    private Label CheckLabel = new Label(By.xpath("(//img[@class='card-img-top img-fluid'])[1]"));
+    private Label WelcomeText = new Label(By.id("nameofuser"));
+    private Textbox usernameTextbox = new Textbox(By.id("loginusername"),"Username Textbox");
+    private Textbox passwordTextbox = new Textbox(By.id("loginpassword"),"Password Textbox");
+    private Button loginButtonForm = new Button(By.xpath("//button[text()='Log in']"),"Login Button Form");
+    private Button PhonesCategory = new Button(By.xpath("//a[text()='Phones']"),"Phones Category");
+    private Button LaptopsCategory = new Button(By.xpath("//a[text()='Laptops']"),"Laptops Category");
+    private Button MonitorsCategory = new Button(By.xpath("//a[text()='Monitors']"),"Monitors Category");
+    private Button CategoryButton = new Button(By.xpath("//a[text()='CATEGORIES']"),"All Categories Buttons");
+
+    @Step("Navigate to: {button}")
     public void NavigateTO(String button){
         switch (button.toLowerCase()) {
             case "signup":
@@ -50,31 +53,22 @@ public class HomePage {
                 LogoutButton.click();
                 break;
             default:
-                System.out.println("Invalid button");
+                logger.error("Invalid button clicked");
         }
     }
-    public boolean Login(String username, String password) {
+    @Step("Login with username: {username} and password: {password}")
+    public void Login(String username, String password) {
         LoginButton.click();
         usernameTextbox.setText(username);
         passwordTextbox.setText(password);
-        loginButton.click();
-
-        try {
-            Alert alert = new WebDriverWait(WebDriverFactory.getDriver(), Duration.ofSeconds(3))
-                    .until(ExpectedConditions.alertIsPresent());
-
-            String alertText = WebDriverFactory.getDriver().switchTo().alert().getText();
-            System.out.println("Alert appeared: " + alertText);
-            WebDriverFactory.getDriver().switchTo().alert().accept();
-            return false; // Login failed
-        } catch (TimeoutException e) {
-            // No alert = login success → wait for Welcome
-            waitForElementToBeVisible(WebDriverFactory.getDriver(), WelcomeText.Locator);
-            return true;
-        }
+        loginButtonForm.click();
+        waitForElementToBeVisible(WebDriverFactory.getDriver(),WelcomeText.Locator);
+        Assert.assertEquals("Welcome " + username, WelcomeText.getText());
+        logger.info("User logged in successfully");
     }
-
+    @Step("Choose category: {category}")
     public HomePage ChooseCategory(String category) {
+        waitForElementToBeVisible(WebDriverFactory.getDriver(), CheckLabel.Locator);
         CategoryButton.click();
         switch (category.toLowerCase()) {
             case "phones":
@@ -87,15 +81,17 @@ public class HomePage {
                 MonitorsCategory.click();
                 break;
             default:
-                System.out.println("Invalid category");
+                logger.error("Invalid category clicked");
         }
         return this;
     }
-
+    @Step("Choose product: {product}")
     public void ChooseProduct(String product) {
-        String xpath = "//a[text()='" + product + "']";
-        Button productButton = new Button(By.xpath(xpath));
-        productButton.click();
+            waitForElementToBeVisible(WebDriverFactory.getDriver(), CheckLabel.Locator);
+            String xpath = "//a[text()='" + product + "']";
+            Button productButton = new Button(By.xpath(xpath),"Product Button");
+            productButton.click();
+
     }
     
 
