@@ -88,7 +88,6 @@ public class CartPage {
         }
         getCartItems();
     }
-    @Step("Fill order details: {name}, {country}, {city}, {creditCard}, {month}, {year}")
     public void fillOrderDetails(String name, String country, String city, String creditCard, String month, String year) {
         waitForElementToBeVisible(WebDriverFactory.getDriver(), PlaceOrderLabel.Locator);
         NameTextbox.setText(name);
@@ -99,16 +98,16 @@ public class CartPage {
         YearTextbox.setText(year);
         logger.info("Order details filled successfully");
     }
-    @Step("Click Purchase button")
+
     public void clickPurchaseButton() {
         PurchaseButton.click();
         logger.info("Purchase button clicked successfully");
     }
-    @Step("Click Close button")
+
     public void clickCloseButton() {
         CloseButton.click();
     }
-    @Step("Click Confirmation button")
+
     public void clickConfirmationButton() {
         waitForSuccessAnimation(driver, LogoLabel.Locator);
         ConfirmationButton.click();

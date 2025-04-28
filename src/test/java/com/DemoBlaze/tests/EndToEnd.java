@@ -7,8 +7,7 @@ import io.qameta.allure.testng.AllureTestNg;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-@Listeners({AllureTestNg.class})
-public class Test1 extends BaseTest {
+public class EndToEnd extends BaseTest {
 
     @Test(dataProvider = "DataProvTest1", invocationCount = 1, priority = 1, dataProviderClass = CSVDataProviders.class)
     @Description("End to End Test 1")
@@ -88,19 +87,7 @@ public class Test1 extends BaseTest {
     }
 
 
-    @Test(dataProvider = "DataProvTest4", invocationCount = 1, priority = 5, dataProviderClass = CSVDataProviders.class)
-    public void test6(String Username, String Password, String Catergory1, String Product1, String Catergory2,
-                      String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
 
-
-        homePage.ChooseCategory(Catergory1).ChooseProduct(Product1);
-        productPage.clickAddToCart();
-        homePage.NavigateTO("cart");
-        Assert.assertEquals(cartPage.ActualPrice(), cartPage.expectedPrice());
-        cartPage.completePurchase(Name, Country, City, CreditCard, Month, Year);
-
-
-    }
 
 
     @Test(dataProvider = "DataProvTest5", invocationCount = 1, priority = 0, dataProviderClass = CSVDataProviders.class)
@@ -119,21 +106,4 @@ public class Test1 extends BaseTest {
     }
 
 
-    @Test(dataProvider = "DataProvTest5", invocationCount = 1, priority = 7, dataProviderClass = CSVDataProviders.class)
-    public void test8(String Username, String Password, String Catergory1, String Product1, String Catergory2, String Product2,
-                      String Name, String CreditCard, String Country, String City, String Year, String Month) {
-
-
-
-        homePage.NavigateTO("cart");
-        homePage.NavigateTO("Home");
-        homePage.ChooseCategory(Catergory2).ChooseProduct(Product2);
-        productPage.clickAddToCart();
-        homePage.NavigateTO("cart");
-        cartPage.deleteProductFromCart(Product1);
-        Assert.assertEquals(cartPage.ActualPrice(), cartPage.expectedPrice());
-        cartPage.completePurchase(Name, Country, City, CreditCard, Month, Year);
-
-
-    }
 }

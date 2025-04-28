@@ -34,7 +34,6 @@ public class HomePage {
     private Button MonitorsCategory = new Button(By.xpath("//a[text()='Monitors']"),"Monitors Category");
     private Button CategoryButton = new Button(By.xpath("//a[text()='CATEGORIES']"),"All Categories Buttons");
 
-    @Step("Navigate to: {button}")
     public void NavigateTO(String button){
         switch (button.toLowerCase()) {
             case "signup":
@@ -56,7 +55,6 @@ public class HomePage {
                 logger.error("Invalid button clicked");
         }
     }
-    @Step("Login with username: {username} and password: {password}")
     public void Login(String username, String password) {
         LoginButton.click();
         usernameTextbox.setText(username);
@@ -66,7 +64,6 @@ public class HomePage {
         Assert.assertEquals("Welcome " + username, WelcomeText.getText());
         logger.info("User logged in successfully");
     }
-    @Step("Choose category: {category}")
     public HomePage ChooseCategory(String category) {
         waitForElementToBeVisible(WebDriverFactory.getDriver(), CheckLabel.Locator);
         CategoryButton.click();
@@ -85,7 +82,6 @@ public class HomePage {
         }
         return this;
     }
-    @Step("Choose product: {product}")
     public void ChooseProduct(String product) {
             waitForElementToBeVisible(WebDriverFactory.getDriver(), CheckLabel.Locator);
             String xpath = "//a[text()='" + product + "']";
