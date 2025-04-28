@@ -1,0 +1,154 @@
+2025-04-28 03:12:12 DEBUG org.testng.TestNG - suiteXmlPath: "C:\Users\Kareem\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml"
+2025-04-28 03:12:12 INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\Kareem\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+2025-04-28 03:12:15 INFO  DemoBlaze.pages.BaseTest - -----------------  Test STARTED ------------
+2025-04-28 03:12:16 INFO  Interactions.Element - Clicked on element: All Categories Buttons
+2025-04-28 03:12:16 INFO  Interactions.Element - Clicked on element: Monitors Category
+2025-04-28 03:12:17 INFO  Interactions.Element - Clicked on element: Product Button
+2025-04-28 03:12:18 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:19 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:19 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:20 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:20 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:21 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:22 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:22 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:23 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:23 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:24 INFO  Interactions.Element - Clicked on element: Cart Button
+2025-04-28 03:12:25 INFO  DemoBlaze.pages.CartPage - Actual price Calculated : 2300
+2025-04-28 03:12:26 INFO  Interactions.Element - Clicked on element: Place Order Button
+2025-04-28 03:12:26 INFO  Interactions.Element - Set text Ashor ' in element:  Name TextBox in Payment
+2025-04-28 03:12:26 INFO  Interactions.Element - Set text 5465656556 ' in element:  Country TextBox in Payment
+2025-04-28 03:12:26 INFO  Interactions.Element - Set text 5 ' in element:  City Textbox in Payment
+2025-04-28 03:12:26 INFO  Interactions.Element - Set text cairo ' in element:  Card number TextBox
+2025-04-28 03:12:27 INFO  Interactions.Element - Set text Egypt ' in element:  Month Textbox
+2025-04-28 03:12:27 INFO  Interactions.Element - Set text 2025 ' in element:  Year TextBox
+2025-04-28 03:12:27 INFO  DemoBlaze.pages.CartPage - Order details filled successfully
+2025-04-28 03:12:27 INFO  Interactions.Element - Clicked on element: Purchase Button
+2025-04-28 03:12:27 INFO  DemoBlaze.pages.CartPage - Purchase button clicked successfully
+2025-04-28 03:12:28 INFO  Interactions.Element - Clicked on element: Confirmation Button
+2025-04-28 03:12:28 INFO  DemoBlaze.pages.BaseTest - -----------------  Test ENDED ------------
+2025-04-28 03:12:30 INFO  DemoBlaze.pages.BaseTest - -----------------  Test STARTED ------------
+2025-04-28 03:12:31 INFO  Interactions.Element - Clicked on element: Login Button
+2025-04-28 03:12:31 INFO  Interactions.Element - Set text kareem1234 ' in element:  Username Textbox
+2025-04-28 03:12:31 INFO  Interactions.Element - Set text 1234 ' in element:  Password Textbox
+2025-04-28 03:12:31 INFO  Interactions.Element - Clicked on element: Login Button Form
+2025-04-28 03:12:33 INFO  DemoBlaze.pages.HomePage - User logged in successfully
+2025-04-28 03:12:33 INFO  Interactions.Element - Clicked on element: All Categories Buttons
+2025-04-28 03:12:33 INFO  Interactions.Element - Clicked on element: Phones Category
+2025-04-28 03:12:34 INFO  Interactions.Element - Clicked on element: Product Button
+2025-04-28 03:12:34 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:35 INFO  Interactions.Element - Clicked on element: Home Button
+2025-04-28 03:12:36 INFO  Interactions.Element - Clicked on element: All Categories Buttons
+2025-04-28 03:12:36 INFO  Interactions.Element - Clicked on element: Laptops Category
+2025-04-28 03:12:37 INFO  Interactions.Element - Clicked on element: Product Button
+2025-04-28 03:12:37 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:38 INFO  Interactions.Element - Clicked on element: Cart Button
+2025-04-28 03:12:39 INFO  DemoBlaze.pages.CartPage - Actual price Calculated : 1900
+2025-04-28 03:12:39 INFO  Interactions.Element - Clicked on element: Place Order Button
+2025-04-28 03:12:40 INFO  Interactions.Element - Set text kareem ' in element:  Name TextBox in Payment
+2025-04-28 03:12:40 INFO  Interactions.Element - Set text 2581651 ' in element:  Country TextBox in Payment
+2025-04-28 03:12:40 INFO  Interactions.Element - Set text 5 ' in element:  City Textbox in Payment
+2025-04-28 03:12:40 INFO  Interactions.Element - Set text cairo ' in element:  Card number TextBox
+2025-04-28 03:12:40 INFO  Interactions.Element - Set text Egypt ' in element:  Month Textbox
+2025-04-28 03:12:40 INFO  Interactions.Element - Set text 2025 ' in element:  Year TextBox
+2025-04-28 03:12:40 INFO  DemoBlaze.pages.CartPage - Order details filled successfully
+2025-04-28 03:12:40 INFO  Interactions.Element - Clicked on element: Purchase Button
+2025-04-28 03:12:40 INFO  DemoBlaze.pages.CartPage - Purchase button clicked successfully
+2025-04-28 03:12:42 INFO  Interactions.Element - Clicked on element: Confirmation Button
+2025-04-28 03:12:42 INFO  DemoBlaze.pages.BaseTest - -----------------  Test ENDED ------------
+2025-04-28 03:12:44 INFO  DemoBlaze.pages.BaseTest - -----------------  Test STARTED ------------
+2025-04-28 03:12:44 INFO  Interactions.Element - Clicked on element: Login Button
+2025-04-28 03:12:45 INFO  Interactions.Element - Set text kareem1234 ' in element:  Username Textbox
+2025-04-28 03:12:45 INFO  Interactions.Element - Set text 1234 ' in element:  Password Textbox
+2025-04-28 03:12:45 INFO  Interactions.Element - Clicked on element: Login Button Form
+2025-04-28 03:12:46 INFO  DemoBlaze.pages.HomePage - User logged in successfully
+2025-04-28 03:12:46 INFO  Interactions.Element - Clicked on element: All Categories Buttons
+2025-04-28 03:12:46 INFO  Interactions.Element - Clicked on element: Monitors Category
+2025-04-28 03:12:48 INFO  Interactions.Element - Clicked on element: Product Button
+2025-04-28 03:12:48 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:49 INFO  Interactions.Element - Clicked on element: Home Button
+2025-04-28 03:12:50 INFO  Interactions.Element - Clicked on element: All Categories Buttons
+2025-04-28 03:12:50 INFO  Interactions.Element - Clicked on element: Phones Category
+2025-04-28 03:12:51 INFO  Interactions.Element - Clicked on element: Product Button
+2025-04-28 03:12:51 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:12:52 INFO  Interactions.Element - Clicked on element: Cart Button
+2025-04-28 03:12:53 INFO  Interactions.Element - Clicked on element: Logout Button
+2025-04-28 03:12:53 INFO  Interactions.Element - Clicked on element: Login Button
+2025-04-28 03:12:54 INFO  Interactions.Element - Set text kareem1234 ' in element:  Username Textbox
+2025-04-28 03:12:54 INFO  Interactions.Element - Set text 1234 ' in element:  Password Textbox
+2025-04-28 03:12:54 INFO  Interactions.Element - Clicked on element: Login Button Form
+2025-04-28 03:12:55 INFO  DemoBlaze.pages.HomePage - User logged in successfully
+2025-04-28 03:12:55 INFO  Interactions.Element - Clicked on element: Cart Button
+2025-04-28 03:12:56 INFO  DemoBlaze.pages.CartPage - Actual price Calculated : 550
+2025-04-28 03:12:56 INFO  Interactions.Element - Clicked on element: Place Order Button
+2025-04-28 03:12:57 INFO  Interactions.Element - Set text kareem ' in element:  Name TextBox in Payment
+2025-04-28 03:12:57 INFO  Interactions.Element - Set text 2581651 ' in element:  Country TextBox in Payment
+2025-04-28 03:12:57 INFO  Interactions.Element - Set text 5 ' in element:  City Textbox in Payment
+2025-04-28 03:12:57 INFO  Interactions.Element - Set text cairo ' in element:  Card number TextBox
+2025-04-28 03:12:57 INFO  Interactions.Element - Set text Egypt ' in element:  Month Textbox
+2025-04-28 03:12:57 INFO  Interactions.Element - Set text 2025 ' in element:  Year TextBox
+2025-04-28 03:12:57 INFO  DemoBlaze.pages.CartPage - Order details filled successfully
+2025-04-28 03:12:57 INFO  Interactions.Element - Clicked on element: Purchase Button
+2025-04-28 03:12:57 INFO  DemoBlaze.pages.CartPage - Purchase button clicked successfully
+2025-04-28 03:12:58 INFO  Interactions.Element - Clicked on element: Confirmation Button
+2025-04-28 03:12:59 INFO  DemoBlaze.pages.BaseTest - -----------------  Test ENDED ------------
+2025-04-28 03:13:00 INFO  DemoBlaze.pages.BaseTest - -----------------  Test STARTED ------------
+2025-04-28 03:13:02 INFO  Interactions.Element - Clicked on element: All Categories Buttons
+2025-04-28 03:13:02 INFO  Interactions.Element - Clicked on element: Monitors Category
+2025-04-28 03:13:03 INFO  Interactions.Element - Clicked on element: Product Button
+2025-04-28 03:13:04 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:13:05 INFO  Interactions.Element - Clicked on element: Cart Button
+2025-04-28 03:13:06 INFO  DemoBlaze.pages.CartPage - Actual price Calculated : 230
+2025-04-28 03:13:06 INFO  Interactions.Element - Clicked on element: Place Order Button
+2025-04-28 03:13:07 INFO  Interactions.Element - Set text Yehia ' in element:  Name TextBox in Payment
+2025-04-28 03:13:07 INFO  Interactions.Element - Set text 49222222222 ' in element:  Country TextBox in Payment
+2025-04-28 03:13:07 INFO  Interactions.Element - Set text 5 ' in element:  City Textbox in Payment
+2025-04-28 03:13:07 INFO  Interactions.Element - Set text cairo ' in element:  Card number TextBox
+2025-04-28 03:13:07 INFO  Interactions.Element - Set text Egypt ' in element:  Month Textbox
+2025-04-28 03:13:07 INFO  Interactions.Element - Set text 2025 ' in element:  Year TextBox
+2025-04-28 03:13:07 INFO  DemoBlaze.pages.CartPage - Order details filled successfully
+2025-04-28 03:13:07 INFO  Interactions.Element - Clicked on element: Purchase Button
+2025-04-28 03:13:07 INFO  DemoBlaze.pages.CartPage - Purchase button clicked successfully
+2025-04-28 03:13:08 INFO  Interactions.Element - Clicked on element: Confirmation Button
+2025-04-28 03:13:08 INFO  DemoBlaze.pages.BaseTest - -----------------  Test ENDED ------------
+2025-04-28 03:13:10 INFO  DemoBlaze.pages.BaseTest - -----------------  Test STARTED ------------
+2025-04-28 03:13:11 INFO  Interactions.Element - Clicked on element: Cart Button
+2025-04-28 03:13:11 INFO  Interactions.Element - Clicked on element: Place Order Button
+2025-04-28 03:13:12 INFO  Interactions.Element - Set text Yehia ' in element:  Name TextBox in Payment
+2025-04-28 03:13:12 INFO  Interactions.Element - Set text 49222222222 ' in element:  Country TextBox in Payment
+2025-04-28 03:13:12 INFO  Interactions.Element - Set text 5 ' in element:  City Textbox in Payment
+2025-04-28 03:13:12 INFO  Interactions.Element - Set text cairo ' in element:  Card number TextBox
+2025-04-28 03:13:12 INFO  Interactions.Element - Set text Egypt ' in element:  Month Textbox
+2025-04-28 03:13:12 INFO  Interactions.Element - Set text 2025 ' in element:  Year TextBox
+2025-04-28 03:13:12 INFO  DemoBlaze.pages.CartPage - Order details filled successfully
+2025-04-28 03:13:12 INFO  Interactions.Element - Clicked on element: Purchase Button
+2025-04-28 03:13:12 INFO  DemoBlaze.pages.CartPage - Purchase button clicked successfully
+2025-04-28 03:13:13 INFO  Interactions.Element - Clicked on element: Confirmation Button
+2025-04-28 03:13:14 INFO  DemoBlaze.pages.BaseTest - -----------------  Test ENDED ------------
+2025-04-28 03:13:15 INFO  DemoBlaze.pages.BaseTest - -----------------  Test STARTED ------------
+2025-04-28 03:13:15 INFO  Interactions.Element - Clicked on element: Login Button
+2025-04-28 03:13:16 INFO  Interactions.Element - Set text Amr Abo Elenin ' in element:  Username Textbox
+2025-04-28 03:13:16 INFO  Interactions.Element - Set text 1 ' in element:  Password Textbox
+2025-04-28 03:13:16 INFO  Interactions.Element - Clicked on element: Login Button Form
+2025-04-28 03:13:17 INFO  DemoBlaze.pages.HomePage - User logged in successfully
+2025-04-28 03:13:18 INFO  Interactions.Element - Clicked on element: All Categories Buttons
+2025-04-28 03:13:18 INFO  Interactions.Element - Clicked on element: Monitors Category
+2025-04-28 03:13:19 INFO  Interactions.Element - Clicked on element: Product Button
+2025-04-28 03:13:20 INFO  Interactions.Element - Clicked on element: Add to cart button
+2025-04-28 03:13:21 INFO  Interactions.Element - Clicked on element: Cart Button
+2025-04-28 03:13:22 INFO  DemoBlaze.pages.CartPage - Actual price Calculated : 230
+2025-04-28 03:13:22 INFO  Interactions.Element - Clicked on element: Place Order Button
+2025-04-28 03:13:23 INFO  Interactions.Element - Set text Amr ' in element:  Name TextBox in Payment
+2025-04-28 03:13:23 INFO  Interactions.Element - Set text 5465656556 ' in element:  Country TextBox in Payment
+2025-04-28 03:13:23 INFO  Interactions.Element - Set text 5 ' in element:  City Textbox in Payment
+2025-04-28 03:13:23 INFO  Interactions.Element - Set text cairo ' in element:  Card number TextBox
+2025-04-28 03:13:23 INFO  Interactions.Element - Set text Egypt ' in element:  Month Textbox
+2025-04-28 03:13:23 INFO  Interactions.Element - Set text 2025 ' in element:  Year TextBox
+2025-04-28 03:13:23 INFO  DemoBlaze.pages.CartPage - Order details filled successfully
+2025-04-28 03:13:23 INFO  Interactions.Element - Clicked on element: Purchase Button
+2025-04-28 03:13:23 INFO  DemoBlaze.pages.CartPage - Purchase button clicked successfully
+2025-04-28 03:13:25 INFO  Interactions.Element - Clicked on element: Confirmation Button
+2025-04-28 03:13:25 INFO  DemoBlaze.pages.BaseTest - -----------------  Test ENDED ------------
