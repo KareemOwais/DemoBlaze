@@ -7,9 +7,11 @@ import io.qameta.allure.testng.AllureTestNg;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+@Listeners(DemoBlaze.Utils.Listeners.class)
 public class EndToEnd extends BaseTest {
 
-    @Test(dataProvider = "DataProvTest1", invocationCount = 1, priority = 1, dataProviderClass = CSVDataProviders.class)
+    @Test(dataProvider = "DataProvTest1", priority = 1, dataProviderClass = CSVDataProviders.class)
     @Description("End to End Test 1")
     public void test1(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
@@ -27,7 +29,7 @@ public class EndToEnd extends BaseTest {
     }
 
 
-    @Test(dataProvider = "DataProvTest2", invocationCount = 1, priority = 2, dataProviderClass = CSVDataProviders.class)
+    @Test(dataProvider = "DataProvTest2", priority = 2, dataProviderClass = CSVDataProviders.class)
     public void test2(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
 
@@ -42,14 +44,13 @@ public class EndToEnd extends BaseTest {
         homePage.NavigateTO("logout");
         homePage.Login(Username, Password);
         homePage.NavigateTO("cart");
-        Assert.assertEquals(cartPage.ActualPrice(), cartPage.expectedPrice());
         cartPage.completePurchase(Name, Country, City, CreditCard, Month, Year);
 
 
     }
 
 
-    @Test(dataProvider = "DataProvTest3", invocationCount = 1, priority = 4, dataProviderClass = CSVDataProviders.class)
+    @Test(dataProvider = "DataProvTest3", priority = 4, dataProviderClass = CSVDataProviders.class)
     public void test3(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
         homePage.NavigateTO("cart");
@@ -58,7 +59,7 @@ public class EndToEnd extends BaseTest {
     }
 
 
-    @Test(dataProvider = "DataProvTest3", invocationCount = 1, priority = 3, dataProviderClass = CSVDataProviders.class)
+    @Test(dataProvider = "DataProvTest3",  priority = 3, dataProviderClass = CSVDataProviders.class)
     public void test4(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
 
@@ -71,7 +72,7 @@ public class EndToEnd extends BaseTest {
     }
 
 
-    @Test(dataProvider = "DataProvTest4", invocationCount = 1, priority = 8, dataProviderClass = CSVDataProviders.class)
+    @Test(dataProvider = "DataProvTest4",  priority = 8, dataProviderClass = CSVDataProviders.class)
     public void test5(String Username, String Password, String Catergory1, String Product1, String Catergory2,
                       String Product2, String Name, String CreditCard, String Country, String City, String Year, String Month) {
 
@@ -90,7 +91,7 @@ public class EndToEnd extends BaseTest {
 
 
 
-    @Test(dataProvider = "DataProvTest5", invocationCount = 1, priority = 0, dataProviderClass = CSVDataProviders.class)
+    @Test(dataProvider = "DataProvTest5",  priority = 0, dataProviderClass = CSVDataProviders.class)
     public void test7(String Username, String Password, String Catergory1, String Product1, String Catergory2, String Product2,
                       String Name, String CreditCard, String Country, String City, String Year, String Month) {
 

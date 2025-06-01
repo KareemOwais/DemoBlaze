@@ -1,5 +1,6 @@
 package Interactions;
 
+import Factory.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -18,6 +19,7 @@ public class Textbox extends Element {
 
     public void setText(String text) {
         try {
+            this.driver = WebDriverFactory.getDriver();
             WebElement element = waitForElementToBeVisible(driver, Locator);
             element.clear(); 
             element.sendKeys(text);

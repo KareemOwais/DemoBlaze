@@ -14,7 +14,7 @@ public abstract class Element {
     // Constructor
     protected Element(By Locator) {
         this.Locator = Locator;
-        this.driver = WebDriverFactory.getDriver();
+
     }
 
 }

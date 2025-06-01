@@ -1,4 +1,5 @@
 package Interactions;
+import Factory.WebDriverFactory;
 import org.openqa.selenium.By;
 
 public class Label extends  Element{
@@ -8,6 +9,7 @@ public class Label extends  Element{
     }
 
     public String getText() {
+        this.driver = WebDriverFactory.getDriver();
         return driver.findElement(Locator).getText();
     }
 }

@@ -19,7 +19,6 @@ import static DemoBlaze.Utils.WaitUtils.*;
 
 public class CartPage {
     //Locators
-    private WebDriver driver = WebDriverFactory.getDriver();
     private static final Logger logger = LoggerFactory.getLogger(CartPage.class);
 
     private Label TotalPrice = new Label(By.id("totalp"));
@@ -39,7 +38,7 @@ public class CartPage {
         public int ActualPrice(){
             waitForElementToBeVisible(WebDriverFactory.getDriver(),TotalPrice.Locator);
             String Total_String = TotalPrice.getText();
-            logger.info("Actual price Calculated : " + Total_String);
+            logger.info("Actual price Calculated : {}", Total_String);
             return Integer.parseInt(Total_String);
 
         }
@@ -61,7 +60,7 @@ public class CartPage {
         public void getCartItems() {
         cartItems.clear(); // clear previous content
         waitForElementToBeVisible(WebDriverFactory.getDriver(),TotalPrice.Locator);
-        List<WebElement> rows = driver.findElements(By.xpath("//tr[@class='success']"));
+        List<WebElement> rows = WebDriverFactory.getDriver().findElements(By.xpath("//tr[@class='success']"));
 
         for (WebElement row : rows) {
             String price = row.findElement(By.xpath("./td[3]")).getText().trim();
@@ -72,13 +71,13 @@ public class CartPage {
     @Step("Delete product from cart: {productName}")
     public void deleteProductFromCart(String productName) {
         waitForElementToBeVisible(WebDriverFactory.getDriver(),TotalPrice.Locator);
-        List<WebElement> rows = driver.findElements(By.xpath("//tr[@class='success']"));
+        List<WebElement> rows = WebDriverFactory.getDriver().findElements(By.xpath("//tr[@class='success']"));
 
         for (WebElement row : rows) {
             String name = row.findElement(By.xpath("./td[2]")).getText().trim();
             if (name.equalsIgnoreCase(productName)) {
                 row.findElement(By.xpath("./td[4]/a")).click();
-               waitForProductToDisappear(productName , driver);
+               waitForProductToDisappear(productName , WebDriverFactory.getDriver());
                 logger.info("Product deleted from cart successfully");
                 break;
             }
@@ -109,7 +108,7 @@ public class CartPage {
     }
 
     public void clickConfirmationButton() {
-        waitForSuccessAnimation(driver, LogoLabel.Locator);
+        waitForSuccessAnimation(WebDriverFactory.getDriver(), LogoLabel.Locator);
         ConfirmationButton.click();
     }
     public void completePurchase(String name, String country, String city, String card, String month, String year) {
